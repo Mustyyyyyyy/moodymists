@@ -84,9 +84,6 @@ Quantity: 1`;
             {isOut ? "Out of stock" : "Order on WhatsApp"}
           </Button>
 
-          <Button href={`/products/${p._id}`} variant="outline">
-            View
-          </Button>
         </div>
       </div>
     </div>

@@ -1,21 +1,13 @@
-"use client";
-
 import AdminTopbar from "@/app/components/layout/AdminTopbar";
-import Button from "@/app/components/ui/Button";
 
 export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-white">
-      <AdminTopbar title="Dashboard" />
+      <AdminTopbar
+        title="Dashboard"
+      />
 
       <main className="p-6">
-        <div className="flex flex-wrap gap-3 mb-6">
-          <Button href="/admin/products">Manage Products</Button>
-          <Button href="/admin/products/new" variant="outline">
-            + Add Product
-          </Button>
-        </div>
-
         <div className="grid sm:grid-cols-3 gap-4">
           {[
             { title: "Total Products", value: "—" },
@@ -37,7 +29,8 @@ export default function AdminDashboard() {
         <div className="mt-6 rounded-2xl border border-pink-100 bg-[var(--brand-soft)] p-5">
           <p className="font-bold text-gray-900">Next step</p>
           <p className="mt-1 text-sm text-gray-700">
-            Go to <span className="font-semibold text-[var(--brand)]">Products</span>{" "}
+            Go to{" "}
+            <span className="font-semibold text-[var(--brand)]">Products</span>{" "}
             and add your candles.
           </p>
         </div>
