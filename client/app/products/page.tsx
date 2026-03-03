@@ -1,5 +1,6 @@
 import ProductGrid from "@/app/components/products/ProductGrid";
 import { apiFetchServer } from "@/app/lib/api.server";
+import Button from "../components/ui/Button";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,10 @@ export default async function ProductsPage() {
           <span className="font-semibold text-[var(--brand)]">Tip:</span> Add your
           address & quantity in the WhatsApp message.
         </div>
+                  <Button href="/" variant="outline">
+                    Back to home
+                  </Button>
+              
       </div>
 
       <div className="mt-8">
