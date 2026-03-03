@@ -7,13 +7,14 @@ import BrandLogo from "@/app/components/brand/BrandLogo";
 const items = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/products", label: "Products" },
+  { href: "/admin/products/new", label: "Add Product" },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex md:w-64 md:flex-col border-r border-pink-100 bg-white">
+    <aside className="h-full w-72 bg-white border-r border-pink-100">
       <div className="h-16 px-5 flex items-center border-b border-pink-100">
         <BrandLogo href="/admin" />
       </div>
@@ -28,6 +29,7 @@ export default function AdminSidebar() {
             <Link
               key={it.href}
               href={it.href}
+              onClick={onNavigate}
               className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition
                 ${
                   active

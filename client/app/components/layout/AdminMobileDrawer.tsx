@@ -1,6 +1,6 @@
 "use client";
 
-import AdminSidebar from "./AdminSidebar";
+import AdminSidebar from "@/app/components/layout/AdminSidebar";
 
 export default function AdminMobileDrawer({
   open,
@@ -18,9 +18,8 @@ export default function AdminMobileDrawer({
         onClick={onClose}
         aria-label="Close menu"
       />
-
-      <div className="relative h-full w-72 bg-white shadow-xl">
-        <AdminSidebar />
+      <div className="relative h-full w-72">
+        <AdminSidebar onNavigate={onClose} />
       </div>
     </div>
   );

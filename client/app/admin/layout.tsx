@@ -11,54 +11,23 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
   const [ok, setOk] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const token = getToken();
-    if (!token) {
-      router.replace("/admin/login");
-      return;
-    }
-
-    let cancelled = false;
+    if (!token) return router.replace("/admin/login");
 
     (async () => {
       try {
-        await Promise.race([
-          requireAdmin(),
-          new Promise((_, rej) => setTimeout(() => rej(new Error("Auth check timeout")), 8000)),
-        ]);
-
-        if (!cancelled) setOk(true);
-      } catch (e: any) {
-        if (cancelled) return;
-
-        setError(e?.message || "Admin check failed");
+        await requireAdmin();
+        setOk(true);
+      } catch {
         logout();
         router.replace("/admin/login");
       }
     })();
-
-    return () => {
-      cancelled = true;
-    };
   }, [router]);
 
-  if (!ok) {
-    return (
-      <div className="min-h-screen grid place-items-center p-6">
-        <div className="rounded-2xl border border-pink-100 bg-white p-6 text-center max-w-md w-full">
-          <p className="font-extrabold text-gray-900">Loading admin…</p>
-          <p className="mt-2 text-sm text-gray-600">
-            Checking your login session.
-          </p>
-          {error ? (
-            <p className="mt-3 text-sm text-pink-700 font-semibold">{error}</p>
-          ) : null}
-        </div>
-      </div>
-    );
-  }
+  if (!ok) return <div className="p-6">Loading…</div>;
 
   return (
     <div className="min-h-screen bg-white flex">
