@@ -76,9 +76,6 @@ Quantity: 1`;
   } catch (e: any) {
     return (
       <main className="mx-auto max-w-2xl px-6 py-20 text-center">
-        <h1 className="text-2xl font-extrabold text-gray-900">
-          Product not available
-        </h1>
         <div className="mt-6">
           <Button href="/products" variant="outline">
             Back to products
